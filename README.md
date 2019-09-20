@@ -1,3 +1,10 @@
+**INFO FOR HOME DEV**
+Python libraries required: Selenium, BeautifulSoup, pandas
+[Pip install ...]
+
+# geckodriver should be in this repo, following command needed for it to work.
+export PATH=$PATH:/path/to/directory/of/executable/
+
 # Box-Theory_Script
 This project will be implementing Darvas' Box Theory, used to determine when to buy/sell certain stocks.
 It will be written in Python and will use data scraping to find the best stocks to use and when it should buy/sell them.
