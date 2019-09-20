@@ -2,11 +2,18 @@
 
 ########## Functions to be implemented ##########
 
-## DetermineBox() returns two vals, upper and lower
-def DetermineBox(str stock):
-    ## Use name of stock to find high/low
-    ## Are boxes defined by average low/high or lowest/highest?
+##GetValues() will return an array
+def GetValues(str stock):
+    values = []
+    
+    
 
+## DetermineBox() returns two vals, upper and lower
+# *args is telling it to expect a list that may vary in size
+def DetermineBox(stock_values[], *args):
+    ## Use name of stock to find high/low
+    ## Upper bound is the highest point it reaches for 3 days and doesn't go
+    ## over.
 
     ## Return the upper and lower bounds
     return upper, lower
@@ -15,13 +22,15 @@ def DetermineBox(str stock):
 
 ## FindValue() finds the current value of a stock by searching web (or app)
 def FindValue(str stock):
-    int value
+    #int value - not needed in Python
     
     
     return value
 
 
 ## Find the volume of stocks traded
+## May not be implemented to start with - could just manually select stocks
+## with a high volume
 def FindVolume(str stock):
     int volume
 
