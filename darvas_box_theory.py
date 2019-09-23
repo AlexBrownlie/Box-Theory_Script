@@ -6,7 +6,8 @@
 def GetValues(str stock):
     values = []
     
-    
+## LINK FOR HISTORICAL DATA CSV
+# https://query1.finance.yahoo.com/v7/finance/download/${acronym}.L?period1=1537524403&period2=1569060403&interval=1d&events=history&crumb=ET1PwQZnBhq
 
 ## DetermineBox() returns two vals, upper and lower
 # *args is telling it to expect a list that may vary in size
