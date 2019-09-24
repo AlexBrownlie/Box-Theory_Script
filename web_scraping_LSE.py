@@ -70,14 +70,25 @@ for row in my_table.findAll('td'):
     # increase index of i if the row is not blank
     i+=1
 
+#print(acronyms)
+#print(names)
+#print(prices)
+
+
 j=0
 #Download historical data
 for ac in acronyms:
-    wget.download('https://query1.finance.yahoo.com/v7/finance/download/'+acronyms[j]+'.L?period1=1537524403&period2=1569060403&interval=1d&events=history&crumb=ET1PwQZnBhq','stock_history.csv')
+    try:
+        wget.download('https://query1.finance.yahoo.com/v7/finance/download/'+acronyms[j]+'.L?period1=1537524403&period2=1569060403&interval=1d&events=history&crumb=ET1PwQZnBhq','stock_history.csv')
+    except:
+        print("Error.")
     j+=1
     
 # Table of Stocks info (Top 10 risers/fallers)
 
 # Saving data to CSV
-df = pd.DataFrame({'Acronym':acronyms,'Name':names,'Price':prices, 'Price Change':price_changes}) 
-df.to_csv('stocks.csv', index=False, encoding='utf-8')
+try:
+    df = pd.DataFrame({'Acronym':acronyms,'Name':names,'Price':prices, 'Price Change':price_changes}) 
+    df.to_csv('stocks.csv', index=False, encoding='utf-8')
+except:
+    print("Error occurred while generating CSV.")
