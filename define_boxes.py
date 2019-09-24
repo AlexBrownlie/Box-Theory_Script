@@ -5,6 +5,8 @@
 import requests
 import os
 
+import urllib.request
+
 ## Get a list of previous stock prices [given an array of acronyms]
 def get_box(stock):
     url = "http://query1.finance.yahoo.com/v7/finance/download/{}.L?period1=1537693886&period2=1569229886&interval=1d&events=history&crumb=Fvb/I2/T6oO".format(stock)
