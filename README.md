@@ -1,5 +1,5 @@
 **INFO FOR HOME DEV**
-Python libraries required: Selenium, BeautifulSoup, pandas
+Python libraries required: Selenium, BeautifulSoup, pandas, wget
 [Pip install ...]
 
 # geckodriver should be in this repo, following command needed for it to work.
