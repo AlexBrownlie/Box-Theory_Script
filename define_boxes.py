@@ -18,7 +18,7 @@ def get_box(stock):
 
         i=0
         for row in csv_reader:
-            if ('null' not in row) and (i!=0):
+            if ('null' not in row) and (i > 0):
                 dates.append(row[0])
                 closes.append(row[4])
                 volumes.append(row[6])
@@ -27,25 +27,57 @@ def get_box(stock):
     #print len(closes)
     #print len(volumes)
 
-    # Maybe get rid of last 4 weeks worth for testing?
-    # Or percentage e.g. remove 25% of results
+    #high = fiftytwo_wh(closes)
+    #print(high)
+    
+    ########## OR ##########
+    ## Find the 4 week high - find range of values since then
+    
+    # remove the most recent 4 weeks (for testing purposes)
+    n=20
+    closes = closes[:len(closes)-n]
+    dates = dates[:len(dates)-n]
+    volumes = volumes[:len(volumes)-n]
+
+    # Only use the most recent 4 weeks to determine performance
+    n = len(closes)-20
+    del closes[:n]
+    del dates[:n]
+    del volumes[:n]
+
+    #variation = float(max(closes)) - float(min(closes))
+    #print(str(variation))
 
     
+    ## If its been bouncing around the same values for 4 weeks then set the
+    ## max value as the lower limit of the box - if it goes above this then buy.
+    
+    ## Checks if the price has gone over the max from the last 4 weeks
+    ## Get the minimum from that period
+    minimum = float(min(closes))
+    maximum = float(max(closes))
+    ## Find how many times its passed the midpoint
+    price_range = maximum - minimum
+    midpoint = maximum - (price_range/2)
+    print(midpoint)
+
+    ## Check how many times the price crossed the midpoint
+    ## (point n < midpoint, point n+1 > midpoint)
+
+    
+    ## and which direction it was going in.
+
+def fiftytwo_wh(closes):
     ## Find the 52 week high? Set this as bottom of box?
     high = max(closes)
     # May not work if same value has been the high multiple times
-    high_index = closes.index(high)
-    print(high)
-    print(high_index)
+    #high_index = closes.index(high)
+    
+    return(high)
 
-    ########## OR ##########
-
-    ## Find the 4 week high - find range of values since then
-    ## If its been bouncing around the same values for 4 weeks then set the
-    ## max value as the lower limit of the box.
-
-
+    
 ## Find the volume traded
+
 
 
 stocks=["ASAI", "RDI", "PURE", "RAV", "JUST"]
@@ -53,5 +85,3 @@ stocks=["ASAI", "RDI", "PURE", "RAV", "JUST"]
 ## FOR LOOP once function tested
 for stock in stocks:
     get_box(stock)
-
-
